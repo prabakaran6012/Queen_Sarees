@@ -8,13 +8,14 @@ import Products from "./components/Products";
 import SignUp from "./components/SignUp";
 import NavBar from "./layout/NavBar";
 import { Route,Routes } from "react-router-dom";
+import PrivateRoute from "./Routes/PrivateRoute";
 const App = () => {
   return ( <>
   <h1>Hai Cap Well come to Queen_Sarees Project</h1>
   <NavBar/>
 <Routes>
   <Route path="/" element={<Home/>}/>
-  <Route path="/Login" element={<Login/>}/>
+  <Route path="/Login" element={<PrivateRoute child={<Login/>}/>}/>
   <Route path="/SignUp" element={<SignUp/>}/>
   <Route path="/Product" element={<Product/>}/>
   <Route path="/products" element={<Products/>}/>
