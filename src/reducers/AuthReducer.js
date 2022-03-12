@@ -1,5 +1,5 @@
 const InitialState={
-    token:"hghgghghg"
+    token:null
 }
 const AuthReducer = (state=InitialState,action) => {
     const {type,payload}=action
