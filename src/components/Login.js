@@ -12,8 +12,15 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import loginUser from '../actions/auth';
 
 export default function Login() {
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const handleLogin=()=>{
+ console.log(loginUser(email,password))
+  }
   return (
     <Flex
       minH={'100vh'}
@@ -35,11 +42,11 @@ export default function Login() {
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
-              <Input type="email" />
+              <Input onChange={e=>{setEmail(e.target.value)}} type="email" />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
-              <Input type="password" />
+              <Input onChange={e=>{setPassword(e.target.value)}} type="password" />
             </FormControl>
             <Stack spacing={10}>
               <Stack
@@ -50,6 +57,7 @@ export default function Login() {
                 <Link color={'blue.400'}>Forgot password?</Link>
               </Stack>
               <Button
+              onClick={handleLogin}
                 bg={'blue.400'}
                 color={'white'}
                 _hover={{
