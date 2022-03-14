@@ -20,11 +20,17 @@ import {
 } from '@chakra-ui/icons';
 
 import { Link as lee } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
+import toast from 'react-hot-toast';
 
 export default function NavBar() {
     const { isOpen, onToggle } = useDisclosure();
     const { token } = useSelector(state => state.auth)
+    const dispatch=useDispatch()
+    const handleLogout=()=>{
+        toast.success("Logout Success")
+        dispatch("LOGOUT")
+         }
     return (
         <Box>
             <Flex
@@ -63,6 +69,7 @@ export default function NavBar() {
                     fontWeight={600}
                     color={'white'}
                     bg={'red.400'}
+                    onClick={handleLogout}
                     to={'/'}
                     _hover={{
                         bg: 'red.300',

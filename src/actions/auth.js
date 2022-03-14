@@ -1,13 +1,24 @@
 import jwt from 'jsonwebtoken'
+import toast from 'react-hot-toast'
 const loginUser = (email,password) => {
-    if(email==="admin@mail.com" && password==="password"){
-        const token=jwt.sign({email},'SECRET')
-        return {token}
+    const users=JSON.parse(localStorage.getItem('users'))
+    const user=users.find(u=>u.Email===email)
+    if(user.Email === email && user.Password===password){
+        toast.success("LOGIN SUCCESS")
+        const token=jwt.sign({email:user.Email},'SECRET')
+        return {
+            type:"LOGIN_SUCCESS",
+            payload:{token}
+        }
     }
     else{
-        return {token:null}
+        toast.error("Something Went Wrong")
+        return {
+        type:"LOGIN_FAILL",
+        payload:{token:null}
     }
-    console.log(email,password)
+    }
+    
 }
  
 export default loginUser;
