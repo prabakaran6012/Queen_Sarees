@@ -1,4 +1,4 @@
-import AdminPage from "./components/AdminPage";
+import AdminPage from "./components/admin/Admin";
 import Home from "./components/Home";
 import Login from "./components/auth/Login";
 import MyOrders from "./components/MyOrders";
@@ -25,6 +25,7 @@ const App = () => {
   <Route path="/Order" element={<Order/>}/>
   <Route path="/MyOrders" element={<MyOrders/>}/>
   <Route path="/admin" element={<AdminPage/>}/>
+  
 
 </Routes>
 <Footer/>

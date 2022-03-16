@@ -8,6 +8,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
     "buffer": "^6.0.3",
     "crypto": "^1.0.1",
     "framer-motion": "^4.1.17",

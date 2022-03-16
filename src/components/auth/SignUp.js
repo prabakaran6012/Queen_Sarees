@@ -30,7 +30,6 @@ import toast from 'react-hot-toast';
       const users=JSON.parse(localStorage.getItem("users"))??[]
       localStorage.setItem('users',JSON.stringify([...users,{Email,FirstName,LastName,Password}]))
       toast.success("SIGNUP SUCCESS")
-      console.log({Email,FirstName,LastName,Password})
     }
   
     return (
