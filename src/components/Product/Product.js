@@ -11,6 +11,7 @@ import {
     useColorModeValue,
     Button,
 } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import {
     IoAnalyticsSharp,
     IoColorFilterOutline,
@@ -19,9 +20,9 @@ import {
     IoSearchSharp,
     IoShieldCheckmarkOutline,
 } from 'react-icons/io5';
-import { ReactElement } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 import Values from '../Values';
-import Details from './Details';
 
 
 const Feature = ({ text, icon, iconBg }) => {
@@ -42,6 +43,19 @@ const Feature = ({ text, icon, iconBg }) => {
 };
 
 export default function Product() {
+    const [selectedProduct, setSelectedproduct] = useState(null)
+    const { products } = useSelector(state => state.products)
+    const { productId } = useParams()
+
+    const fetchProduct = (productId) => {
+        const product = products.find(product => product.id == productId)
+        setSelectedproduct(product)
+    }
+    useEffect(() => {
+        fetchProduct(productId)
+    }, [])
+
+    console.log(selectedProduct)
     return (
         <Container maxW={'7xl'} py={12}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
@@ -50,7 +64,7 @@ export default function Product() {
                         rounded={'md'}
                         alt={'feature image'}
                         src={
-                            'https://cdn.shopify.com/s/files/1/0984/6842/products/Red-Fusion-38-40_1024x1024.jpg?v=1611006835'
+                            selectedProduct && selectedProduct.imageUrl
                         }
                         objectFit={'cover'}
                     />
@@ -65,12 +79,11 @@ export default function Product() {
                         p={2}
                         alignSelf={'flex-start'}
                         rounded={'md'}>
-                        Watch Band
+                        {selectedProduct && selectedProduct.category}
                     </Text>
-                    <Heading>Nylon Sport Loop</Heading>
+                    <Heading>{selectedProduct && selectedProduct.productName}</Heading>
                     <Text color={'gray.500'} fontSize={'lg'}>
-                        Comfort. Day in, day out.
-                        Stretchable recycled yarn interwoven with silicone threads designed for ultra-comfort with no buckles or clasps.
+                        {selectedProduct && selectedProduct.description}
                     </Text>
                     <Stack
                         spacing={4}
@@ -85,7 +98,7 @@ export default function Product() {
                                 <Icon as={IoScanOutline} color={'yellow.500'} w={5} h={5} />
                             }
                             iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                            text={'For : Apple watch (38mm,40mm,41mm)'}
+                            text={`Note : ${selectedProduct && selectedProduct.note} wash`}
                         />
 
                         <Feature
@@ -93,13 +106,13 @@ export default function Product() {
                                 <Icon as={IoColorFilterOutline} color={'purple.500'} w={5} h={5} />
                             }
                             iconBg={useColorModeValue('purple.100', 'purple.900')}
-                            text={'Color : Red'}
+                            text={`Color : ${selectedProduct && selectedProduct.color}`}
                         />
-                        <Feature
+                        {/* <Feature
                             icon={<Icon as={IoShieldCheckmarkOutline} color={'green.500'} w={5} h={5} />}
                             iconBg={useColorModeValue('green.100', 'green.900')}
                             text={'12 Months Warranty'}
-                        />
+                        /> */}
                     </Stack>
                     <Flex justifyContent={'space-between'} spacing={10} pt={2}>
                         <Button
@@ -113,7 +126,7 @@ export default function Product() {
                             }}>
                             Buy Now
                         </Button>
-                        <Heading color={'gray.900'} textAlign={'center'} borderRadius={'10px'} flexGrow={'2'} background={'gray.100'}>20$</Heading>
+                        <Heading color={'gray.900'} textAlign={'center'} borderRadius={'10px'} flexGrow={'2'} background={'gray.100'}>{selectedProduct && selectedProduct.listingPrice}</Heading>
                     </Flex>
                 </Stack>
 

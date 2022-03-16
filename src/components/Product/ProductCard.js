@@ -10,7 +10,7 @@ import {
 
 
 const ProductCard = ({ data }) => {
-    const { imageUrl } = data
+    const { imageUrl,productName,category, listingPrice, actualPrice ,color} = data
     console.log(data)
     return (
         <Box
@@ -55,18 +55,18 @@ const ProductCard = ({ data }) => {
                 />
             </Box>
             <Stack pt={10} align={'center'}>
-                <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    Brand
+                <Text color={'gray.700'} fontSize={'2x0.5'} textTransform={'uppercase'}>
+                   {productName}
                 </Text>
                 <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Nice Chair, pink
+                   {category}
                 </Heading>
                 <Stack direction={'row'} align={'center'}>
                     <Text color={'gray.700'} fontWeight={800} fontSize={'xl'}>
-                        $57
+                        {listingPrice}
                     </Text>
                     <Text textDecoration={'line-through'} color={'gray.600'}>
-                        $199
+                        {actualPrice}
                     </Text>
                 </Stack>
             </Stack>
