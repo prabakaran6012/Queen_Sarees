@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "API server for My Queen_Sarees",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon dist/index.js",
+    "start-dev":"babel src -w --out-dir dist"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prabakaran6012/Queen_Sarees"
+  },
+  "author": "Prabakaran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prabakaran6012/Queen_Sarees/issues"
+  },
+  "homepage": "https://github.com/prabakaran6012/Queen_Sarees#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  }
+}
