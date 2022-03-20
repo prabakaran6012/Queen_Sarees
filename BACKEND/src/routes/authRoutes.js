@@ -2,13 +2,14 @@ import express from 'express'
 import User from '../services/mongodb/models/User'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import isAdmin from '../middlewares/isAdmin'
 const router=express.Router()
 
 
 
 
 
-router.get('/users',async(req,res)=>{
+router.get('/users',isAdmin,async(req,res)=>{
     try {
         const users= await User.find({})
         res.json({users})
