@@ -1,6 +1,7 @@
 import express from 'express'
 import User from '../services/mongodb/models/User'
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 const router=express.Router()
 
 
@@ -31,7 +32,32 @@ router.post('/signup',async(req,res)=>{
     res.status(500).json({users:{}})
     }
 })
+router.post('/login',async(req,res)=>{
+    try {
+        const {email,password}=req.body
+        const user=await User.findOne({email})
+        if(user){
+            const isVerified=await bcrypt.compare(password,user.password)
+            if(isVerified){
+                const {_id,role}=user
+                const token=jwt.sign({_id,role},process.env.JWT_SECRET,{expiresIn:"1h"})
+                return res.json({token})
+            }else{
+                return res.json({token:null,message:"Unauthorized"})
+            }
+          
+        }else{
+            return res.json({token:null,message:"User dose not exixst"})
+        }
 
+     
+        
+        res.json({users})
+    } catch (error) {
+    console.log(error.message)
+    res.status(500).json({users:{}})
+    }
+})
 
 
 
