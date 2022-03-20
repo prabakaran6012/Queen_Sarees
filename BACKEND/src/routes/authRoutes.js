@@ -50,10 +50,6 @@ router.post('/login',async(req,res)=>{
         }else{
             return res.json({token:null,message:"User dose not exixst"})
         }
-
-     
-        
-        res.json({users})
     } catch (error) {
     console.log(error.message)
     res.status(500).json({users:{}})
