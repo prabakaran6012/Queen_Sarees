@@ -4,8 +4,8 @@
   "description": "API server for My Queen_Sarees",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon dist/index.js",
-    "start-dev": "babel src -w --out-dir dist"
+    "dev2": "nodemon dist/index.js",
+    "dev1": "babel src -w --out-dir dist"
   },
   "repository": {
     "type": "git",
