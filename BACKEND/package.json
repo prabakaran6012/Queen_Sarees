@@ -4,8 +4,9 @@
   "description": "API server for My Queen_Sarees",
   "main": "index.js",
   "scripts": {
-    "dev2": "nodemon dist/index.js",
-    "dev1": "babel src -w --out-dir dist"
+    "dev": "nodemon dist/index.js",
+    "build": "babel src --out-dir dist",
+    "start":"npm install && npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
