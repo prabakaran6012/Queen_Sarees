@@ -16,6 +16,9 @@ app.use("/api/v1/auth",authRoutes)
 app.use("/api/v1/category",categoryRoutes)
 app.use("/api/v1/notes",noteRoutes)
 app.use("/api/v1/product",productRoutes)
+app.get('/',(req,res)=>{
+    res.send(`server on live at ${port}`)
+})
 app.listen(port,()=>{
     console.log(`server started!! ${port}`)
 })
