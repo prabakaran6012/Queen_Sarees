@@ -13,7 +13,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import loginUser from '../../actions/auth';
+import {loginUser} from '../../actions/auth';
 import {useDispatch} from 'react-redux'
 
 export default function Login() {

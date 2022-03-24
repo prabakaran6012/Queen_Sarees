@@ -1,19 +1,13 @@
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-
-
-
- const loginUser = (email, password) => async (dispatch) => {
-
+export const loginUser = (email, password) => async (dispatch) => {
     try {
         const base_Url = 'http://localhost:8080'
-
         const res = await axios.post(`${base_Url}/api/v1/auth/login`, {
             email, password
         })
         const { token, message } = res.data
-
         if (token) {
             toast.success('Login Success')
             dispatch({
@@ -32,5 +26,35 @@ import { toast } from 'react-hot-toast'
         toast.error(error.message)
     }
 };
-  
-export default loginUser;
+
+
+export const signupUser = (email, firstName, lastName, password) => async (dispatch) => {
+
+    try {
+        const base_Url = 'http://localhost:8080'
+
+        const res = await axios.post(`${base_Url}/api/v1/auth/signup`, {
+            email, firstName, lastName, password
+        })
+        
+        const { users } = res.data
+        if (users) {
+            toast.success('Signup Success')
+            dispatch({
+                type: "SIGNUP_SUCCESS",
+                payload: {
+                    signup: true
+                }
+            })
+        } else {
+            toast.error('Signup Failed')
+            dispatch({
+                type: "SIGNUP_FAILED",
+                payload: { signup: false }
+            })
+        }
+    } catch (error) {
+        console.log(error.message)
+        toast.error(error.message)
+    }
+}; 

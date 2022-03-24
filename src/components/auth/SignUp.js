@@ -14,9 +14,11 @@ import {
     useColorModeValue,
     Link,
   } from '@chakra-ui/react';
-  import { Link as lee } from 'react-router-dom'
-  import { useState } from 'react';
+  import { Link as lee,useNavigate} from 'react-router-dom'
+  import { useEffect, useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+  import { signupUser } from '../../actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
 import toast from 'react-hot-toast';
   
   export default function SignUp() {
@@ -25,13 +27,26 @@ import toast from 'react-hot-toast';
     const [LastName,setLastName]=useState('')
     const [Email,setEmail]=useState('')
     const [Password,setPassword]=useState('')
+    const dispatch = useDispatch()
     const handleSignUp=()=>{
 
-      const users=JSON.parse(localStorage.getItem("users"))??[]
-      localStorage.setItem('users',JSON.stringify([...users,{Email,FirstName,LastName,Password}]))
+      dispatch(signupUser(Email, FirstName, LastName, Password))
       toast.success("SIGNUP SUCCESS")
     }
-  
+    const navigate = useNavigate()
+
+    const { signup } = useSelector(state => state.auth)
+   
+    if (signup && signup === true) {
+        navigate('/Login')
+    }
+
+
+    useEffect(() => {
+        return () => dispatch({
+            type: "REFRESH_SIGNUP"
+        })
+    }, [])
     return (
       <Flex
         minH={'100vh'}
