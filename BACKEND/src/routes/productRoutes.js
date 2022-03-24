@@ -15,7 +15,7 @@ isProtected: false (public)
 
 router.get('/all', async (req, res) => {
     try {
-        const products = await Product.find({}).populate('category')
+        const products = await Product.find({}).populate(['category','note'])
         return res.status(200).json({ products, message: "Successfully fetched products" })
     } catch (error) {
         console.log(error.message)
@@ -31,16 +31,16 @@ query: categoryId
 isProtected: false (public)
 */
 
-router.get('/all', async (req, res) => {
-    try {
-        const { categoryId } = req.query
-        const products = await Product.find({ category: categoryId }).populate('category')
-        return res.status(200).json({ products, message: "Successfully fetched products" })
-    } catch (error) {
-        console.log(error.message)
-        return res.status(500).json({ products: [], message: "error fetching products" })
-    }
-})
+// router.get('/all', async (req, res) => {
+//     try {
+//         const { categoryId } = req.query
+//         const products = await Product.find({ category: categoryId }).populate('category')
+//         return res.status(200).json({ products, message: "Successfully fetched products" })
+//     } catch (error) {
+//         console.log(error.message)
+//         return res.status(500).json({ products: [], message: "error fetching products" })
+//     }
+// })
 
 
 
