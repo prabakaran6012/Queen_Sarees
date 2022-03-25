@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon dist/index.js",
     "build": "babel -w src --out-dir dist",
-    "start":"npm install && npm run build && node dist/index.js"
+    "start": "npm install && npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
