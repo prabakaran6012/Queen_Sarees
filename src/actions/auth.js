@@ -3,13 +3,14 @@ import axios from 'axios'
 import { toast } from 'react-hot-toast'
 export const loginUser = (email, password) => async (dispatch) => {
     try {
-        const base_Url = 'http://localhost:8080'
+        const base_Url = 'https://prabakaran-queen-s-backend.herokuapp.com'
         const res = await axios.post(`${base_Url}/api/v1/auth/login`, {
             email, password
         })
         const { token, message } = res.data
         if (token) {
             toast.success('Login Success')
+            localStorage.setItem('token',token)
             dispatch({
                 type: "LOGIN_SUCCESS",
                 payload: { token }
@@ -31,7 +32,7 @@ export const loginUser = (email, password) => async (dispatch) => {
 export const signupUser = (email, firstName, lastName, password) => async (dispatch) => {
 
     try {
-        const base_Url = 'http://localhost:8080'
+        const base_Url = 'https://prabakaran-queen-s-backend.herokuapp.com'
 
         const res = await axios.post(`${base_Url}/api/v1/auth/signup`, {
             email, firstName, lastName, password

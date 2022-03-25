@@ -4,6 +4,10 @@ const InitialState={
 const AuthReducer = (state=InitialState,action) => {
     const {type,payload}=action
     switch(type){
+        case "SET_AUTH_TOKEN":
+            return{
+                ...state,...payload
+            }
         case "LOGIN_SUCCESS":
             return payload
 

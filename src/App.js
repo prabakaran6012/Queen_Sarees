@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import AdminPage from "./components/admin/Admin";
 import Home from "./components/Home";
 import Login from "./components/auth/Login";
@@ -11,7 +12,20 @@ import { Route,Routes } from "react-router-dom";
 import PrivateRoute from "./Routes/PrivateRoute";
 import Footer from "./layout/Footer";
 import {Toaster} from 'react-hot-toast'
+import { useDispatch } from "react-redux";
+
 const App = () => {
+  const dispatch= useDispatch()
+  useEffect(()=>{
+    const token=localStorage.getItem('token')
+    if(token)
+    {
+        dispatch({
+          type:"SET_AUTH_TOKEN",
+          payload:{token}
+        })
+    }
+  },[])
   return ( <>
 <div><Toaster/></div>
   <NavBar/>
