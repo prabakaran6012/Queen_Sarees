@@ -1,16 +1,16 @@
 const InitialState={
-    categories:[]
+    notes:[]
 }
-const CategoriesReducer = (state=InitialState,action) => {
+const NotesReducer = (state=InitialState,action) => {
     const {type,payload}=action
     switch(type){
-        case "ADD_CATEGORY":
+        case "ADD_NOTE":
             return state
-        case "ADD_CATEGORY_FAILED":
+        case "ADD_NOTE_FAILED":
             return state
         default:
             return state
     }
 }
  
-export default CategoriesReducer;
+export default NotesReducer;

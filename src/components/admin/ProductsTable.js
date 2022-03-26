@@ -32,6 +32,7 @@ const ProductsTable = () => {
                     <Th>ID</Th>
                     <Th>Name</Th>
                     <Th >Category</Th>
+                    <Th >Wash</Th>
                     <Th >Actual Price</Th>
                     <Th >Listing Price</Th>
                     <Th >Color</Th>
@@ -44,6 +45,7 @@ const ProductsTable = () => {
                         <Td>{product && product.id}</Td>
                         <Td>{product && product.productName}</Td>
                         <Td>{product && product.category}</Td>
+                        <Td>{product && product.note}</Td>
                         <Td>{product && product.actualPrice}</Td>
                         <Td>{product && product.listingPrice}</Td>
                         <Td>{product && product.color}</Td>

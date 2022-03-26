@@ -4,26 +4,26 @@ import { toast } from 'react-hot-toast'
 
 
 
-export const addCategory = (name, description) => async (dispatch) => {
+export const addNote = (note) => async (dispatch) => {
 
     try {
         const base_Url = 'https://prabakaran-queen-s-backend.herokuapp.com'
 
-        const res = await axios.post(`${base_Url}/api/v1/category/add`, {
-            name, description
+        const res = await axios.post(`${base_Url}/api/v1/notes/add`, {
+            note
         })
-        console.log(res.data)
-        const { category, message } = res.data
+        
+        const { message } = res.data
 
-        if (category) {
+        if (message=="Saved note in DB") {
             toast.success(message)
             dispatch({
-                type: "ADD_CATEGORY",
+                type: "ADD_NOTE",
             })
         } else {
             toast.error(message)
             dispatch({
-                type: "ADD_CATEGORY_FAILED",
+                type: "ADD_NOTE_FAILED",
             })
         }
     } catch (error) {

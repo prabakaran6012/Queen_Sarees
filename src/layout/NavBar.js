@@ -29,6 +29,7 @@ export default function NavBar() {
     const dispatch=useDispatch()
     const handleLogout=()=>{
         toast.success("Logout Success")
+        localStorage.clear()
         dispatch("LOGOUT")
          }
     return (
