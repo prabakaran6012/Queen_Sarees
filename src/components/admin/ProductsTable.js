@@ -19,7 +19,7 @@ const ProductsTable = () => {
     const { products } = useSelector(state => state.products)
     const dispatch = useDispatch()
 
-
+console.log(products)
     const handleDelete = (productId) => {
         dispatch(deleteProduct(productId))
     }
@@ -42,12 +42,12 @@ const ProductsTable = () => {
             <Tbody>
                 {products.map(product => <>
                     <Tr>
-                        <Td>{product && product.id}</Td>
-                        <Td>{product && product.productName}</Td>
-                        <Td>{product && product.category}</Td>
-                        <Td>{product && product.note}</Td>
-                        <Td>{product && product.actualPrice}</Td>
-                        <Td>{product && product.listingPrice}</Td>
+                        <Td>{product && product._id}</Td>
+                        <Td>{product && product.name}</Td>
+                        <Td>{product && product.category.name}</Td>
+                        <Td>{product && product.note.note}</Td>
+                        <Td>{product && product.price}</Td>
+                        <Td>{product && product.listPrice}</Td>
                         <Td>{product && product.color}</Td>
                         <Td color={product && product.stock < 10 ? "red" : "green.400"} isNumeric>{product && product.stock}</Td>
                         <Td >

@@ -9,9 +9,33 @@ import Filters from './FilterDrawer'
 import Values from './Values';
 import { Link as lee } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux'
+import axios from 'axios';
+// import { getAllProducts } from '../actions/product';
 
 export default function Products() {
-    const {products} = useSelector(state=>state.products)
+    // const {products,setproducts} = useState([]) 
+    
+// const {products,setproducts}=useState([])
+const dispatch = useDispatch()
+const getAllProducts = async() => {
+    const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
+    const { products } = res.data
+    const a=products.map(pd=>{return pd})
+    console.log(a)
+    
+    // setproducts(products)
+    dispatch({
+        type: "GET_PRODUCTS",
+        payload:{products}
+    })
+}
+    useEffect(() => {
+      getAllProducts()
+      
+    }, [])
+    const {products}=useSelector(state=>state.products)
     return (
         <Box w="100%" color="gary.600" >
             <Box p={6} textAlign={'center'} border={'none'} >
@@ -21,7 +45,7 @@ export default function Products() {
                 </Flex>
             </Box>
             <Flex justifyContent={'center'} flexWrap={'wrap'} >
-                {products.map(product => <Link to={`/shop/${product.id}`} as={lee} ><ProductCard data={product} /></Link>)}
+                {products && products.map(product => <Link to={`/shop/${product._id}`} as={lee} ><ProductCard data={product} /></Link>)}
             </Flex>
         </Box >
     );

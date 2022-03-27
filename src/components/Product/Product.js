@@ -48,7 +48,7 @@ export default function Product() {
     const { productId } = useParams()
 
     const fetchProduct = (productId) => {
-        const product = products.find(product => product.id == productId)
+        const product = products.find(product => product._id == productId)
         setSelectedproduct(product)
     }
     useEffect(() => {
@@ -79,9 +79,9 @@ export default function Product() {
                         p={2}
                         alignSelf={'flex-start'}
                         rounded={'md'}>
-                        {selectedProduct && selectedProduct.category}
+                        {selectedProduct && selectedProduct.category.name}
                     </Text>
-                    <Heading>{selectedProduct && selectedProduct.productName}</Heading>
+                    <Heading>{selectedProduct && selectedProduct.name}</Heading>
                     <Text color={'gray.500'} fontSize={'lg'}>
                         {selectedProduct && selectedProduct.description}
                     </Text>
@@ -98,7 +98,7 @@ export default function Product() {
                                 <Icon as={IoScanOutline} color={'yellow.500'} w={5} h={5} />
                             }
                             iconBg={useColorModeValue('yellow.100', 'yellow.900')}
-                            text={`Note : ${selectedProduct && selectedProduct.note} wash`}
+                            text={`Note : ${selectedProduct && selectedProduct.note.note} wash`}
                         />
 
                         <Feature
@@ -126,7 +126,7 @@ export default function Product() {
                             }}>
                             Buy Now
                         </Button>
-                        <Heading color={'gray.900'} textAlign={'center'} borderRadius={'10px'} flexGrow={'2'} background={'gray.100'}>{selectedProduct && selectedProduct.listingPrice}</Heading>
+                        <Heading color={'gray.900'} textAlign={'center'} borderRadius={'10px'} flexGrow={'2'} background={'gray.100'}>{selectedProduct && selectedProduct.listPrice}</Heading>
                     </Flex>
                 </Stack>
 

@@ -23,8 +23,8 @@ const AddProduct = () => {
     const [category, setcategory] = useState('')
     const [note, setnote] = useState('')
     const [color, setcolor] = useState('')
-    const [listingPrice, setlistingPrice] = useState('')
-    const [actualPrice, setactualPrice] = useState('')
+    const [listPrice, setlistingPrice] = useState('')
+    const [price, setactualPrice] = useState('')
     const [stock, setstock] = useState(0)
     const [categories, setCategories] = useState([])
     const [notes, setNotes] = useState([])
@@ -47,13 +47,26 @@ const AddProduct = () => {
     }, [])
 
     const handleAddProduct = () => {
-        // dispatch(addProduct({
-        //     name, imageUrl, description, category, color, listingPrice, actualPrice, stock
-        // }))
-        console.log({
-            name, imageUrl, description, category,note, color, listingPrice, actualPrice, stock
-        })
+        dispatch(addProduct({
+            name, price, listPrice, stock, description, color, category, note, imageUrl
+        }))
+        // console.log({
+        //     name, price, listPrice, stock, description, color, category, note, imageUrl
+        // })
     }
+
+
+
+    // body('name').isLength({ min: 1 }),
+    // body('price').isNumeric(),
+    // body('listPrice').isNumeric(),
+    // body('stock').isNumeric(),
+    // body('description').isLength({ min: 10 }),
+    // body('color').isLength({ min: 1 }),
+    // body('category').isLength({ min: 1 }),
+    // body('note').isLength({ min: 2 }),
+    // body('imageUrl').isURL(),
+
 
     return (
         <Box m={4}>
