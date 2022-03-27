@@ -28,7 +28,7 @@ const ProductCard = ({ data }) => {
                 rounded={'lg'}
                 mt={-12}
                 pos={'relative'}
-                height={'230px'}
+                height={'full'}
                 _after={{
                     transition: 'all .3s ease',
                     content: '""',
@@ -48,7 +48,7 @@ const ProductCard = ({ data }) => {
                 }}>
                 <Image
                     rounded={'lg'}
-                    height={230}
+                    height={'full'}
                     width={282}
                     objectFit={'cover'}
                     src={imageUrl}
@@ -63,7 +63,7 @@ const ProductCard = ({ data }) => {
                 </Heading>
                 <Stack direction={'row'} align={'center'}>
                     <Text color={'gray.700'} fontWeight={800} fontSize={'xl'}>
-                        {listPrice}
+                        {`$${listPrice}`}
                     </Text>
                     <Text textDecoration={'line-through'} color={'gray.600'}>
                         {price}

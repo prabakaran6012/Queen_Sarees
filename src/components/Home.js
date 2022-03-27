@@ -28,11 +28,11 @@ import {
                   bg: 'blue.400',
                   zIndex: -1,
                 }}>
-                HandLoom
+                Kalai
               </Text>
               <br />{' '}
               <Text color={'blue.400'} as={'span'}>
-                Sarees
+               HandLoom Sarees
               </Text>{' '}
             </Heading>
             <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>

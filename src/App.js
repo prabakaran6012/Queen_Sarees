@@ -13,10 +13,24 @@ import PrivateRoute from "./Routes/PrivateRoute";
 import Footer from "./layout/Footer";
 import {Toaster} from 'react-hot-toast'
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 const App = () => {
+  const getAllProducts = async() => {
+    const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
+    const { products } = res.data
+    const a=products.map(pd=>{return pd})
+    console.log(a)
+    
+    // setproducts(products)
+    dispatch({
+        type: "GET_PRODUCTS",
+        payload:{products}
+    })
+}
   const dispatch= useDispatch()
   useEffect(()=>{
+   
     const token=localStorage.getItem('token')
     if(token)
     {
@@ -25,6 +39,7 @@ const App = () => {
           payload:{token}
         })
     }
+    getAllProducts()
   },[])
   return ( <>
 <div><Toaster/></div>

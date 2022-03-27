@@ -52,7 +52,7 @@ console.log(products)
                         <Td color={product && product.stock < 10 ? "red" : "green.400"} isNumeric>{product && product.stock}</Td>
                         <Td >
                             <Stack direction="row" spacing={4} align="center">
-                                <Button onClick={() => { handleDelete(product.id) }} colorScheme="red" variant="solid">
+                                <Button onClick={() => { handleDelete(product._id) }} colorScheme="red" variant="solid">
                                     Delete
                                 </Button>
                                 <Button colorScheme="purple" variant="solid">

@@ -18,23 +18,22 @@ export default function Products() {
     // const {products,setproducts} = useState([]) 
     
 // const {products,setproducts}=useState([])
-const dispatch = useDispatch()
-const getAllProducts = async() => {
-    const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
-    const { products } = res.data
-    const a=products.map(pd=>{return pd})
-    console.log(a)
+// const dispatch = useDispatch()
+// const getAllProducts = async() => {
+//     const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
+//     const { products } = res.data
+//     constproducts.map(pd=>{return pd}))
     
-    // setproducts(products)
-    dispatch({
-        type: "GET_PRODUCTS",
-        payload:{products}
-    })
-}
-    useEffect(() => {
-      getAllProducts()
+//     // setproducts(products)
+//     dispatch({
+//         type: "GET_PRODUCTS",
+//         payload:{products}
+//     })
+// }
+//     useEffect(() => {
+//       getAllProducts()
       
-    }, [])
+//     }, [])
     const {products}=useSelector(state=>state.products)
     return (
         <Box w="100%" color="gary.600" >
