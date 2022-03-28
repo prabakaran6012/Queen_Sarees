@@ -13,16 +13,36 @@ import {
 import { useSelector } from "react-redux";
 import { deleteProduct } from '../../actions/product'
 import { useDispatch } from 'react-redux'
+import axios from "axios";
+import { useEffect } from "react";
 
 
 const ProductsTable = () => {
-    const { products } = useSelector(state => state.products)
-    const dispatch = useDispatch()
 
-console.log(products)
+
+    const dispatch = useDispatch()
     const handleDelete = (productId) => {
         dispatch(deleteProduct(productId))
     }
+    const getAllProducts = async() => {
+        const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
+        const { products } = res.data
+       
+        
+        // setproducts(products)
+        dispatch({
+            type: "GET_PRODUCTS",
+            payload:{products}
+        })
+    }
+        useEffect(() => {
+          getAllProducts()
+          
+        }, [handleDelete])
+        const {products}=useSelector(state=>state.products)
+
+
+   
 
     return (
         <Table variant="simple">

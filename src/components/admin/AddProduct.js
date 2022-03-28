@@ -50,22 +50,8 @@ const AddProduct = () => {
         dispatch(addProduct({
             name, price, listPrice, stock, description, color, category, note, imageUrl
         }))
-        // console.log({
-        //     name, price, listPrice, stock, description, color, category, note, imageUrl
-        // })
+      
     }
-
-
-
-    // body('name').isLength({ min: 1 }),
-    // body('price').isNumeric(),
-    // body('listPrice').isNumeric(),
-    // body('stock').isNumeric(),
-    // body('description').isLength({ min: 10 }),
-    // body('color').isLength({ min: 1 }),
-    // body('category').isLength({ min: 1 }),
-    // body('note').isLength({ min: 2 }),
-    // body('imageUrl').isURL(),
 
 
     return (

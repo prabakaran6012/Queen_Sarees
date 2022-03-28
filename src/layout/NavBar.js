@@ -21,6 +21,7 @@ import {
 
 import { Link as lee } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux';
+import CartPreview from '../components/cart/CartPreview';
 import toast from 'react-hot-toast';
 
 export default function NavBar() {
@@ -29,7 +30,7 @@ export default function NavBar() {
     const dispatch=useDispatch()
     const handleLogout=()=>{
         toast.success("Logout Success")
-        localStorage.clear()
+        localStorage.removeItem("token")
         dispatch("LOGOUT")
          }
     return (
@@ -63,7 +64,10 @@ export default function NavBar() {
                     </Flex>
                 </Flex>
 
-                {token ? <Button
+                {token ? 
+                <>
+                 <CartPreview />
+                <Button
                     as={lee}
                     display={{ base: 'none', md: 'inline-flex' }}
                     fontSize={'sm'}
@@ -76,7 +80,9 @@ export default function NavBar() {
                         bg: 'red.300',
                     }}>
                     Logout
-                </Button> : <Stack
+                </Button>
+                </>
+                : <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}

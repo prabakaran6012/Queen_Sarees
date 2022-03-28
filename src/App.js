@@ -14,20 +14,11 @@ import Footer from "./layout/Footer";
 import {Toaster} from 'react-hot-toast'
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { loadCart } from "./actions/cart";
+import Cart from "./components/cart/Cart";
 
 const App = () => {
-  const getAllProducts = async() => {
-    const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
-    const { products } = res.data
-    const a=products.map(pd=>{return pd})
-    console.log(a)
-    
-    // setproducts(products)
-    dispatch({
-        type: "GET_PRODUCTS",
-        payload:{products}
-    })
-}
+ 
   const dispatch= useDispatch()
   useEffect(()=>{
    
@@ -39,7 +30,7 @@ const App = () => {
           payload:{token}
         })
     }
-    getAllProducts()
+    dispatch(loadCart())
   },[])
   return ( <>
 <div><Toaster/></div>
@@ -54,8 +45,7 @@ const App = () => {
   <Route path="/Order" element={<Order/>}/>
   <Route path="/MyOrders" element={<MyOrders/>}/>
   <Route path="/admin" element={<AdminPage/>}/>
-  
-
+  <Route path='/cart' element={<Cart />} />
 </Routes>
 <Footer/>
 

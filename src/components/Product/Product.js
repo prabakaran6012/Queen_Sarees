@@ -19,10 +19,15 @@ import {
     IoScanOutline,
     IoSearchSharp,
     IoShieldCheckmarkOutline,
+    IoCartOutline
 } from 'react-icons/io5';
+import { toast } from 'react-hot-toast'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Values from '../Values';
+import Details from './Details';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../actions/cart';
 
 
 const Feature = ({ text, icon, iconBg }) => {
@@ -46,7 +51,7 @@ export default function Product() {
     const [selectedProduct, setSelectedproduct] = useState(null)
     const { products } = useSelector(state => state.products)
     const { productId } = useParams()
-
+const dispatch=useDispatch()
     const fetchProduct = (productId) => {
         const product = products.find(product => product._id == productId)
         setSelectedproduct(product)
@@ -56,6 +61,20 @@ export default function Product() {
     }, [])
 
     console.log(selectedProduct)
+    const addCart = (item) => {
+        try {
+            const token=localStorage.getItem("token")
+            if(token){
+                dispatch(addToCart(item))
+            }else{
+                toast.error("Login your Account ")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+
     return (
         <Container maxW={'7xl'} py={12}>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
@@ -115,7 +134,10 @@ export default function Product() {
                         /> */}
                     </Stack>
                     <Flex justifyContent={'space-between'} spacing={10} pt={2}>
-                        <Button
+                    <Button
+                            onClick={() => {
+                                addCart(selectedProduct)
+                            }}
                             flexGrow={'4'}
                             loadingText="Submitting"
                             size="lg"
@@ -124,7 +146,7 @@ export default function Product() {
                             _hover={{
                                 bg: 'blue.400',
                             }}>
-                            Buy Now
+                            Add To Cart &nbsp; &nbsp; <IoCartOutline size={30} />
                         </Button>
                         <Heading color={'gray.900'} textAlign={'center'} borderRadius={'10px'} flexGrow={'2'} background={'gray.100'}>{selectedProduct && selectedProduct.listPrice}</Heading>
                     </Flex>

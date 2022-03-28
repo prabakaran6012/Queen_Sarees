@@ -12,28 +12,24 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux'
 import axios from 'axios';
-// import { getAllProducts } from '../actions/product';
+
 
 export default function Products() {
-    // const {products,setproducts} = useState([]) 
-    
-// const {products,setproducts}=useState([])
-// const dispatch = useDispatch()
-// const getAllProducts = async() => {
-//     const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
-//     const { products } = res.data
-//     constproducts.map(pd=>{return pd}))
-    
-//     // setproducts(products)
-//     dispatch({
-//         type: "GET_PRODUCTS",
-//         payload:{products}
-//     })
-// }
-//     useEffect(() => {
-//       getAllProducts()
+
+const dispatch = useDispatch()
+const getAllProducts = async() => {
+    const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
+    const { products } = res.data
+   
+    dispatch({
+        type: "GET_PRODUCTS",
+        payload:{products}
+    })
+}
+    useEffect(() => {
+      getAllProducts()
       
-//     }, [])
+    }, [])
     const {products}=useSelector(state=>state.products)
     return (
         <Box w="100%" color="gary.600" >
