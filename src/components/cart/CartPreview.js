@@ -18,9 +18,9 @@ const CartPreview = () => {
     return (
         <div class='cart-preview' >
             <Link to="/cart" >
-                <IoCartOutline style={{ marginRight: "20px" }} size={30} />
+                <IoCartOutline style={{ marginRight: "20px",position:'relative' }} size={30} />
             </Link>
-            {totalQuantity > 0 ? <div id='quantity'style={{height:'25px',width:'25px', borderRadius:'50%',backgroundColor:'violet',paddingLeft:'8px',fontWeight:'900'}} >{totalQuantity}</div> : null}
+            {totalQuantity > 0 ? <div id='quantity'style={{height:'25px',width:'25px', borderRadius:'50%',backgroundColor:'violet',paddingLeft:'8px',fontWeight:'900',position:'absolute',top:'10px',right:'100px'}} >{totalQuantity}</div> : null}
         </div>
     );
 }
