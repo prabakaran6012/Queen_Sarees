@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { loadCart } from "./actions/cart";
 import Cart from "./components/cart/Cart";
+import AdminRoute from "./Routes/AdminRoute"
+
 
 const App = () => {
  
@@ -23,6 +25,7 @@ const App = () => {
   useEffect(()=>{
    
     const token=localStorage.getItem('token')
+
     if(token)
     {
         dispatch({
@@ -44,7 +47,7 @@ const App = () => {
   <Route path="/shop" element={<Products/>}/>
   <Route path="/Order" element={<Order/>}/>
   <Route path="/MyOrders" element={<MyOrders/>}/>
-  <Route path="/admin" element={<AdminPage/>}/>
+  <Route path="/admin" element={<AdminRoute child={<AdminPage/>}/>}/>
   <Route path='/cart' element={<Cart />} />
 </Routes>
 <Footer/>

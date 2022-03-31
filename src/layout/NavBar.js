@@ -23,16 +23,34 @@ import { Link as lee } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux';
 import CartPreview from '../components/cart/CartPreview';
 import toast from 'react-hot-toast';
-
+import jwt_decode from "jwt-decode";
+import { useEffect, useState } from 'react';
 export default function NavBar() {
+    
+   
     const { isOpen, onToggle } = useDisclosure();
     const { token } = useSelector(state => state.auth)
+    
+    // const {role}=decoded
+   
     const dispatch=useDispatch()
     const handleLogout=()=>{
         toast.success("Logout Success")
         localStorage.removeItem("token")
         dispatch("LOGOUT")
          }
+         const [role,setrole]=useState('')
+         useEffect(()=>{
+            try {
+                const token=localStorage.getItem('token')
+            const decoded=jwt_decode(token);
+            const {role}=decoded
+            setrole(role)
+            } catch (error) {
+                console.log(error)
+            }
+            // console.log(role)
+         })
     return (
         <Box>
             <Flex
@@ -63,10 +81,40 @@ export default function NavBar() {
                         <DesktopNav />
                     </Flex>
                 </Flex>
-
-                {token ? 
+               
+                {role==1 ?
+                 <><Button
+                 as={lee}
+                 display={{ base: 'none', md: 'inline-flex' }}
+                 fontSize={'sm'}
+                 fontWeight={600}
+                 color={'white'}
+                 bg={'green.400'}
+                 marginRight={'10'}
+                 to={'/admin'}
+                 _hover={{
+                     bg: 'red.300',
+                 }}>
+                Admin
+             </Button>
+             <Button
+             as={lee}
+             display={{ base: 'none', md: 'inline-flex' }}
+             fontSize={'sm'}
+             fontWeight={600}
+             color={'white'}
+             bg={'red.400'}
+             onClick={handleLogout}
+             to={'/'}
+             _hover={{
+                 bg: 'red.300',
+             }}>
+             Logout
+         </Button></>:token ? 
                 <>
-                 <CartPreview />
+               
+                 <CartPreview/>
+                 
                 <Button
                     as={lee}
                     display={{ base: 'none', md: 'inline-flex' }}
@@ -82,7 +130,8 @@ export default function NavBar() {
                     Logout
                 </Button>
                 </>
-                : <Stack
+                 
+               : <Stack
                     flex={{ base: 1, md: 0 }}
                     justify={'flex-end'}
                     direction={'row'}
@@ -216,11 +265,6 @@ const NAV_ITEMS = [
         label: 'CottonCollection',
         to: '/shop?q=cotton'
 
-    },
-    {
-        label: 'Admin',
-        to: '/admin'
-
-    },
+    }
 
 ];
