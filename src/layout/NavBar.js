@@ -25,12 +25,29 @@ import CartPreview from '../components/cart/CartPreview';
 import toast from 'react-hot-toast';
 import jwt_decode from "jwt-decode";
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 export default function NavBar() {
-    
+    // const [categories, setCategories] = useState([])
+    // const getCategories = async () => {
+    //     const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/category/all')
+    //     const { categories, message } = res.data
+    //     setCategories(categories)
+       
+    // } 
+    const [role,setrole]=useState('')
+    const decoding=()=>{
+       const token =localStorage.getItem("token")
+       const decoded=jwt_decode(token);
+       const {role}=decoded
+       
+       setrole(role)
+    }
    
     const { isOpen, onToggle } = useDisclosure();
     const { token } = useSelector(state => state.auth)
-    
+    if(token){
+       
+    }
     // const {role}=decoded
    
     const dispatch=useDispatch()
@@ -39,18 +56,15 @@ export default function NavBar() {
         localStorage.removeItem("token")
         dispatch("LOGOUT")
          }
-         const [role,setrole]=useState('')
+        
+         
+        //  const {token}=useSelector(state=>state.auth)
          useEffect(()=>{
-            try {
-                const token=localStorage.getItem('token')
-            const decoded=jwt_decode(token);
-            const {role}=decoded
-            setrole(role)
-            } catch (error) {
-                console.log(error)
-            }
+            // getCategories()
+            localStorage.getItem("token")?decoding():console.log("sorry you don't have any token")
+              
             // console.log(role)
-         })
+         },[handleLogout])
     return (
         <Box>
             <Flex
