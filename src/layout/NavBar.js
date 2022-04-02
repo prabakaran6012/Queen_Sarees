@@ -27,13 +27,7 @@ import jwt_decode from "jwt-decode";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 export default function NavBar() {
-    // const [categories, setCategories] = useState([])
-    // const getCategories = async () => {
-    //     const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/category/all')
-    //     const { categories, message } = res.data
-    //     setCategories(categories)
-       
-    // } 
+   
     const [role,setrole]=useState('')
     const decoding=()=>{
        const token =localStorage.getItem("token")
@@ -45,11 +39,7 @@ export default function NavBar() {
    
     const { isOpen, onToggle } = useDisclosure();
     const { token } = useSelector(state => state.auth)
-    if(token){
-       
-    }
-    // const {role}=decoded
-   
+  
     const dispatch=useDispatch()
     const handleLogout=()=>{
         toast.success("Logout Success")
@@ -57,13 +47,13 @@ export default function NavBar() {
         dispatch("LOGOUT")
          }
         
-         
-        //  const {token}=useSelector(state=>state.auth)
+    
+ 
+
          useEffect(()=>{
-            // getCategories()
+ 
             localStorage.getItem("token")?decoding():console.log("sorry you don't have any token")
-              
-            // console.log(role)
+
          },[handleLogout])
     return (
         <Box>
@@ -268,16 +258,19 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
     {
+        label: 'About',
+        to: '/about'
+    },{
         label: 'Shop',
         to: '/shop'
     },
     {
-        label: 'PattuSarees',
-        to: '/shop?q=pattu'
+        label: 'Pattu',
+        to: '/shopbycat/62371001f42da0ed75ed97aa'
     },
     {
-        label: 'CottonCollection',
-        to: '/shop?q=cotton'
+        label: 'Cotton',
+        to: '/shopbycat/6236d46a5a70c718fc7a624c'
 
     }
 

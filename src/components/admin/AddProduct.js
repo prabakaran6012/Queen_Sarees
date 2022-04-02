@@ -11,7 +11,7 @@ import {
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addProduct } from '../../actions/product'
 
 
@@ -33,6 +33,7 @@ const AddProduct = () => {
     const getCategories = async () => {
         const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/category/all')
         const { categories, message } = res.data
+        console.log(res.data)
         setCategories(categories)
     }
     const getNotes = async () => {
@@ -40,7 +41,8 @@ const AddProduct = () => {
         const { notes, message } = res.data
         setNotes(notes)
     }
-
+    // const data = useSelector(state => state.categories)
+    // console.log(data.categories)
     useEffect(() => {
         getCategories()
         getNotes()

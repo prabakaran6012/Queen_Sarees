@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import AdminPage from "./components/admin/Admin";
 import Home from "./components/Home";
+import About from "./components/About";
 import Login from "./components/auth/Login";
 import MyOrders from "./components/MyOrders";
 import Order from "./components/Order";
@@ -22,8 +23,11 @@ import AdminRoute from "./Routes/AdminRoute"
 const App = () => {
  
   const dispatch= useDispatch()
+  
+    
+
   useEffect(()=>{
-   
+    
     const token=localStorage.getItem('token')
 
     if(token)
@@ -45,6 +49,8 @@ const App = () => {
   <Route path="/SignUp" element={<SignUp/>}/>
   <Route path="/shop/:productId" element={<Product/>}/>
   <Route path="/shop" element={<Products/>}/>
+  <Route path="/about" element={<About/>}/>
+  <Route path="/shopbycat/:categoryId" element={<Products/>}/>
   <Route path="/Order" element={<Order/>}/>
   <Route path="/MyOrders" element={<MyOrders/>}/>
   <Route path="/admin" element={<AdminRoute child={<AdminPage/>}/>}/>

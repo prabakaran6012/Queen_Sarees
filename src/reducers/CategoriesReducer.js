@@ -3,6 +3,7 @@ const InitialState={
 }
 const CategoriesReducer = (state=InitialState,action) => {
     const {type,payload}=action
+    // const {categories}=payload
     switch(type){
         case "ADD_CATEGORY":
             return state
