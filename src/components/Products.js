@@ -5,8 +5,7 @@ import {
     Link
 } from '@chakra-ui/react';
 import ProductCard from './Product/ProductCard'
-import Filters from './FilterDrawer'
-import Values from './Values';
+
 import { Link as lee } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -48,8 +47,8 @@ const getAllProducts = async() => {
         <Box w="100%" color="gary.600" >
             <Box p={6} textAlign={'center'} border={'none'} >
                 <Flex justifyContent={'center'} flexDirection={'row'}>
-                    <Heading >Showing All Products...</Heading>
-                    <Filters />
+                    <Heading >Products...</Heading>
+                    
                 </Flex>
             </Box>
             <Flex justifyContent={'center'} flexWrap={'wrap'} >

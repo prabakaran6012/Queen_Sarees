@@ -72,7 +72,7 @@ export const CartOrderSummary = ({ total }) => {
             currency: currency,
             name: "+Queen.",
             description: "Test Transaction",
-            image: 'https://www.svgrepo.com/show/174895/orkut-logo.svg',
+            image: 'https://i.pinimg.com/originals/49/ab/b6/49abb60b8c36c1297f8998ee08aec5b5.png',
             order_id: order_id,
             handler: async function (response) {
                 toast.success("Order Succeed")

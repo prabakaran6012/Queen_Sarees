@@ -75,9 +75,7 @@ const ProductsTable = () => {
                                 <Button onClick={() => { handleDelete(product._id) }} colorScheme="red" variant="solid">
                                     Delete
                                 </Button>
-                                <Button colorScheme="purple" variant="solid">
-                                    Edit
-                                </Button>
+                               
 
                             </Stack>
                         </Td>

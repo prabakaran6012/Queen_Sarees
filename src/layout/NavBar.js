@@ -80,7 +80,7 @@ export default function NavBar() {
                     />
                 </Flex>
                 <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-                    <Link to='/' as={lee} ><Image hr borderRadius="full" boxSize="50px" src='https://www.svgrepo.com/show/317455/queen.svg' /></Link>
+                    <Link to='/' as={lee} ><Image hr borderRadius="full" boxSize="50px" objectFit='cover' src='https://i.pinimg.com/originals/49/ab/b6/49abb60b8c36c1297f8998ee08aec5b5.png' /></Link>
                     <Flex align={'center'} display={{ base: 'none', md: 'flex' }} ml={10}>
                         <DesktopNav />
                     </Flex>
