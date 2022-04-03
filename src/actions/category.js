@@ -1,9 +1,5 @@
-import jwt from 'jsonwebtoken'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-
-
-
 export const addCategory = (name, description) => async (dispatch) => {
 
     try {

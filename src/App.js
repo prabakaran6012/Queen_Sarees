@@ -3,8 +3,6 @@ import AdminPage from "./components/admin/Admin";
 import Home from "./components/Home";
 import About from "./components/About";
 import Login from "./components/auth/Login";
-import MyOrders from "./components/MyOrders";
-import Order from "./components/Order";
 import Product from "./components/Product/Product";
 import Products from "./components/Products";
 import SignUp from "./components/auth/SignUp";
@@ -55,8 +53,6 @@ const App = () => {
   <Route path="/shop" element={<Products/>}/>
   <Route path="/about" element={<About/>}/>
   <Route path="/shopbycat/:categoryId" element={<Products/>}/>
-  <Route path="/Order" element={<Order/>}/>
-  <Route path="/MyOrders" element={<MyOrders/>}/>
   <Route path="/admin" element={<AdminRoute child={<AdminPage/>}/>}/>
   <Route path='/cart' element={<Cart />} />
   <Route path='/love' element={<Love />} />

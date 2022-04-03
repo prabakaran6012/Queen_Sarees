@@ -59,8 +59,8 @@ const Productlove=()=> {
     
     console.log(productId)
 const dispatch=useDispatch()
-    const fetchProduct = (productId) => {
-        const product = products.find(product => product._id == productId)
+    const fetchProduct =(productId) => {
+        const product =products.find(product => product._id == productId)
         setSelectedproduct(product)
     }
 
