@@ -25,4 +25,4 @@ const CartPreview = () => {
     );
 }
 
-export default CartPreview;
+export default CartPreview

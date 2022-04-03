@@ -17,7 +17,10 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { loadCart } from "./actions/cart";
 import Cart from "./components/cart/Cart";
+import Love from "./components/love/Love";
 import AdminRoute from "./Routes/AdminRoute"
+import { loadLove } from "./actions/love";
+import Productlove from "./components/Product/Productlove";
 
 
 const App = () => {
@@ -38,6 +41,7 @@ const App = () => {
         })
     }
     dispatch(loadCart())
+    dispatch(loadLove())
   },[])
   return ( <>
 <div><Toaster/></div>
@@ -55,6 +59,8 @@ const App = () => {
   <Route path="/MyOrders" element={<MyOrders/>}/>
   <Route path="/admin" element={<AdminRoute child={<AdminPage/>}/>}/>
   <Route path='/cart' element={<Cart />} />
+  <Route path='/love' element={<Love />} />
+  <Route path='/productlove/:product_id' element={<Productlove/>}/>
 </Routes>
 <Footer/>
 

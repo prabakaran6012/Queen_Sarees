@@ -22,6 +22,7 @@ import {
 import { Link as lee } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux';
 import CartPreview from '../components/cart/CartPreview';
+import LovePreview from '../components/love/LovePreview';
 import toast from 'react-hot-toast';
 import jwt_decode from "jwt-decode";
 import { useEffect, useState } from 'react';
@@ -120,9 +121,10 @@ export default function NavBar() {
              Logout
          </Button></>:token ? 
                 <>
+                
                <Text marginRight={'5'}>Hi! {UserName}</Text>
-                 <CartPreview/>
-                 
+                <LovePreview/>
+               <CartPreview/>
                 <Button
                     as={lee}
                     display={{ base: 'none', md: 'inline-flex' }}

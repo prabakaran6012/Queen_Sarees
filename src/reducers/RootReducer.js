@@ -5,6 +5,7 @@ import products from "./ProductsReducer"
 import categories from "./CategoriesReducer"
 import notes from "./NoteReducer"
 import cart from './cartReducer'
+import love from './loveReducer'
 export default combineReducers({
-auth,loader,products,categories,notes,cart
+auth,loader,products,categories,notes,cart,love
 })

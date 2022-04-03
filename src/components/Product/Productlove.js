@@ -25,13 +25,14 @@ import { toast } from 'react-hot-toast'
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import Values from '../Values';
-import Details from './Details';
+import Details from '../Product/Details';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../actions/cart';
 import { addToLove } from '../../actions/love';
 import {
     FcLike
 } from 'react-icons/fc';
+import axios from 'axios';
 
 
 const Feature = ({ text, icon, iconBg }) => {
@@ -51,17 +52,37 @@ const Feature = ({ text, icon, iconBg }) => {
     );
 };
 
-export default function Product() {
+const Productlove=()=> {
+    const { product_id } = useParams()
+    const productId=product_id
     const [selectedProduct, setSelectedproduct] = useState(null)
-    const { products } = useSelector(state => state.products)
-    const { productId } = useParams()
+    
+    console.log(productId)
 const dispatch=useDispatch()
     const fetchProduct = (productId) => {
         const product = products.find(product => product._id == productId)
         setSelectedproduct(product)
     }
+
+
+
+    const getAllProducts = async() =>  {
+        const res = await axios.get('https://prabakaran-queen-s-backend.herokuapp.com/api/v1/product/all')
+        const { products } = res.data
+       
+        dispatch({
+            type: "GET_PRODUCTS",
+            payload:{products}
+        })
+    }
+    const { products } = useSelector(state => state.products)
+
+
+
     useEffect(() => {
+        getAllProducts()
         fetchProduct(productId)
+
     }, [])
 
     console.log(selectedProduct)
@@ -189,3 +210,4 @@ const dispatch=useDispatch()
         </Container >
     );
 }
+export default Productlove
