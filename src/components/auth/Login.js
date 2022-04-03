@@ -23,6 +23,13 @@ export default function Login() {
 
   const handleLogin=()=>{
  dispatch(loginUser(email,password))
+const item=localStorage.getItem("UserName")
+ if(item){
+
+ }else{
+   const UserName=email.split("@")
+   localStorage.setItem("UserName",`${UserName[0]}`)
+ }
   }
   return (
     <Flex

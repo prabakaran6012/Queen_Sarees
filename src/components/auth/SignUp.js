@@ -32,6 +32,7 @@ import toast from 'react-hot-toast';
 
       dispatch(signupUser(Email, FirstName, LastName, Password))
       toast.success("SIGNUP SUCCESS")
+      localStorage.setItem("UserName",`${FirstName}`)
     }
     const navigate = useNavigate()
 
@@ -43,6 +44,8 @@ import toast from 'react-hot-toast';
 
 
     useEffect(() => {
+      if(localStorage.getItem("UserName")){
+        localStorage.removeItem("UserNmae")}
         return () => dispatch({
             type: "REFRESH_SIGNUP"
         })

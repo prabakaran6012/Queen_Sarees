@@ -29,6 +29,7 @@ import axios from 'axios';
 export default function NavBar() {
    
     const [role,setrole]=useState('')
+    const [UserName,setUserName]=useState('')
     const decoding=()=>{
        const token =localStorage.getItem("token")
        const decoded=jwt_decode(token);
@@ -44,16 +45,19 @@ export default function NavBar() {
     const handleLogout=()=>{
         toast.success("Logout Success")
         localStorage.removeItem("token")
+        localStorage.removeItem("UserName")
         dispatch("LOGOUT")
          }
         
     
- 
+
 
          useEffect(()=>{
  
             localStorage.getItem("token")?decoding():console.log("sorry you don't have any token")
-
+            const UserName=localStorage.getItem("UserName")
+            setUserName(UserName)
+          
          },[handleLogout])
     return (
         <Box>
@@ -116,7 +120,7 @@ export default function NavBar() {
              Logout
          </Button></>:token ? 
                 <>
-               
+               <Text marginRight={'5'}>Hi! {UserName}</Text>
                  <CartPreview/>
                  
                 <Button
