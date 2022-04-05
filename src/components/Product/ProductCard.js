@@ -63,7 +63,7 @@ const ProductCard = ({ data }) => {
                 </Heading>
                 <Stack direction={'row'} align={'center'}>
                     <Text color={'gray.700'} fontWeight={800} fontSize={'xl'}>
-                        {`$${listPrice}`}
+                        {`₹${listPrice}`}
                     </Text>
                     <Text textDecoration={'line-through'} color={'gray.600'}>
                         {price}

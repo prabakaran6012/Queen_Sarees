@@ -55,7 +55,7 @@ export const CartOrderSummary = ({ total }) => {
 
         // creating a new order
         const result = await axios.post("https://prabakaran-queen-s-backend.herokuapp.com/api/v1/order/createOrder", {
-            amount: '50000'
+            amount: `${total*100}`
         });
 
         if (!result) {
@@ -126,7 +126,7 @@ export const CartOrderSummary = ({ total }) => {
                         Total
                     </Text>
                     <Text fontSize="xl" fontWeight="extrabold">
-                        ${total}
+                    ₹{total}
                     </Text>
                 </Flex>
             </Stack>

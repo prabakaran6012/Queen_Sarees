@@ -47,6 +47,8 @@ export default function NavBar() {
         toast.success("Logout Success")
         localStorage.removeItem("token")
         localStorage.removeItem("UserName")
+        localStorage.getItem("cart") && localStorage.removeItem("cart")
+        localStorage.getItem("love") && localStorage.removeItem("love")
         dispatch("LOGOUT")
          }
         
