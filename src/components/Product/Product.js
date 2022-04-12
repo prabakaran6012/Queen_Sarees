@@ -179,6 +179,7 @@ const dispatch=useDispatch()
                             }}>
                             Make Love &nbsp; &nbsp; <FcLike size={30} />
                         </Button>
+                     
                         <Heading 
                          marginLeft={'2'}
                          color={'gray.900'} textAlign={'center'} borderRadius={'10px'} flexGrow={'2'} background={'gray.100'}>₹{selectedProduct && selectedProduct.listPrice}</Heading>

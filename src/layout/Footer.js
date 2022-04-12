@@ -67,7 +67,7 @@ export default function Footer() {
                         <Image hr borderRadius="full" boxSize="50px" objectFit='cover' src='https://i.pinimg.com/originals/49/ab/b6/49abb60b8c36c1297f8998ee08aec5b5.png' />
                         </Box>
                         <Text fontSize={'sm'}>
-                            © 2022 Created By Prabakaran.T
+                            © 2022 Developed By Prabakaran.T
                         </Text>
                         <Stack direction={'row'} spacing={6}>
                             <SocialButton label={'Twitter'} href={'#'}>

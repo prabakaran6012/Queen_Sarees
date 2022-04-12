@@ -28,7 +28,7 @@ import {
                   bg: 'blue.400',
                   zIndex: -1,
                 }}>
-                Velmani
+                Queen
               </Text>
               <br />{' '}
               <Text color={'blue.400'} as={'span'}>
