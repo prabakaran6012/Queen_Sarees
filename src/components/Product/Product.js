@@ -177,7 +177,7 @@ const dispatch=useDispatch()
                             _hover={{
                                 bg: 'pink.400',
                             }}>
-                            Make Love &nbsp; &nbsp; <FcLike size={30} />
+                            Add To Heart &nbsp; &nbsp; <FcLike size={30} />
                         </Button>
                      
                         <Heading 

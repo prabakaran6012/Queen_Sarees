@@ -8,6 +8,7 @@ import {
     useBreakpointValue,
   } from '@chakra-ui/react';
   import { Link as lee } from 'react-router-dom'
+  import main_logo from './src_img/homeImg.jpg'
   export default function Home() {
     return (
         
@@ -59,7 +60,7 @@ import {
             alt={'Login Image'}
             objectFit={'cover'}
             src={
-              'https://images.unsplash.com/photo-1640292343595-889db1c8262e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3ZWF2aW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+              main_logo
             }
           />
         </Flex>
@@ -67,4 +68,4 @@ import {
       
     );
   }
-  
+  // 'https://images.unsplash.com/photo-1640292343595-889db1c8262e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3ZWF2aW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
